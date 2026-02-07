@@ -6,10 +6,10 @@
     <title>Important. Very Serious. Click Here.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
+    <!-- <link
       href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Playfair+Display:wght@600&display=swap"
       rel="stylesheet"
-    />
+    /> -->
     <style>
       * {
         box-sizing: border-box;
@@ -329,16 +329,16 @@
       </div>
       <p class="reveal-badge">You did it my bibi! You passed!</p>
       <h1 class="valentine-headline">
-        Now, <span class="name">Will you</span> be my Valentine?
+        Now, <span class="name">will you</span> be my Valentine?
       </h1>
       <p class="valentine-message">(Surprise)</p>
       <div class="invitation-box">
         <p>
-          Happy <strong>1 year 4 months and 9 days</strong> of putting up with
+          Happy <strong>1 year, 4 months, and 9 days</strong> of putting up with
           me. 🎉
         </p>
         <!-- <p>Let's celebrate our anniversary.</p> -->
-        <p>(Say yes. The potatoes approved you.)</p>
+        <p>(P.S. Say yes. The potatoes approved you.)</p>
       </div>
       <p class="sign-off">
         With one year of love and many more to go,<br /><span class="his-name"
@@ -377,12 +377,20 @@
       target.addEventListener("click", () => {
         score++;
         scoreEl.textContent = score;
-        if (score >= neededForPeek) {
+        if (score == neededForPeek) {
           const peekMonkies = document.getElementsByClassName("monkey-peek");
           console.log(peekMonkies);
           for (let peekMonkey of peekMonkies) {
             console.log(peekMonkey);
             peekMonkey.innerHTML = "🫣";
+          }
+        }
+        if (score == needed - 1) {
+          const peekMonkies = document.getElementsByClassName("monkey-peek");
+          console.log(peekMonkies);
+          for (let peekMonkey of peekMonkies) {
+            console.log(peekMonkey);
+            peekMonkey.innerHTML = "🥳";
           }
         }
         if (score >= needed) {
