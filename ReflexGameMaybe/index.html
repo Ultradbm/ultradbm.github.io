@@ -309,11 +309,13 @@
         My bibi got good reflexes I bet <span class="monkey-peek">🙈</span>
       </p>
       <p class="game-instructions">
-        Click the big potatoes <strong>15 times</strong> and watch them get
-        bigger <span class="monkey-peek">🙈</span>.
+        Click the big potatoes
+        <strong><span class="score-placeholder">20</span> times</strong> and
+        watch them get bigger <span class="monkey-peek">🙈</span>.
       </p>
       <p class="score-display">
-        <span id="score">0</span> / 15 potatoes bopped
+        <span id="score">0</span> /
+        <span class="score-placeholder">20</span> potatoes bopped
         <span class="monkey-peek">🙈</span>
       </p>
       <div id="game-zone">
@@ -359,8 +361,13 @@
       const valentineScreen = document.getElementById("valentine-screen");
 
       let score = 0;
-      const needed = 15;
+      const needed = 20;
       const neededForPeek = 10;
+      const scorePlaceholders =
+        document.getElementsByClassName("score-placeholder");
+      for (let scorePlaceholder of scorePlaceholders) {
+        scorePlaceholder.innerHTML = needed;
+      }
       const zoneRect = () => zone.getBoundingClientRect();
       let fontSize = 3;
       function randomPosition() {
@@ -379,13 +386,14 @@
         scoreEl.textContent = score;
         if (score == neededForPeek) {
           const peekMonkies = document.getElementsByClassName("monkey-peek");
-          console.log(peekMonkies);
+          // console.log(peekMonkies);
+          //Fix click detection for potato on mobile...
           for (let peekMonkey of peekMonkies) {
             console.log(peekMonkey);
             peekMonkey.innerHTML = "🫣";
           }
         }
-        if (score == needed - 1) {
+        if (score == needed - 3) {
           const peekMonkies = document.getElementsByClassName("monkey-peek");
           console.log(peekMonkies);
           for (let peekMonkey of peekMonkies) {
@@ -398,6 +406,7 @@
           document.body.classList.add("valentine-mode");
           gameScreen.classList.add("hidden");
           valentineScreen.classList.add("visible");
+          window.scrollTo(0, 0);
           spawnConfetti();
           spawnConfetti(true);
         } else {
